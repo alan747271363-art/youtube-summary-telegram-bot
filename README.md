@@ -107,6 +107,9 @@ python scripts/smoke_demo.py
 The demo prints one English and one Chinese sample reply using the same summary
 renderer used by the bot.
 
+For reviewers who do not want to run any commands, the committed
+`reviewer-demo.md` file shows the same English and Chinese output shape.
+
 ## Quest Deliverable Checklist
 
 - Telegram bot entrypoint: `app/telegram_bot.py`
@@ -117,6 +120,7 @@ renderer used by the bot.
 - Automated validation: `.github/workflows/ci.yml`
 - Secret-safe configuration check: `scripts/config_check.py`
 - Offline review demo: `scripts/smoke_demo.py`
+- Static review artifact: `reviewer-demo.md`
 
 ## Notes for Review
 

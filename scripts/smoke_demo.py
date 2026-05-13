@@ -4,7 +4,7 @@ from app.summarizer import build_structured_summary, render_summary
 from app.transcriber import Transcript, TranscriptSegment
 
 
-def main() -> None:
+def build_demo_outputs() -> list[tuple[str, str]]:
     demos = [
         (
             "English demo",
@@ -44,9 +44,16 @@ def main() -> None:
         ),
     ]
 
+    outputs: list[tuple[str, str]] = []
     for title, transcript in demos:
         summary = build_structured_summary(transcript, max_sections=3)
         rendered = render_summary(summary, title, "https://youtu.be/demo")
+        outputs.append((title, rendered))
+    return outputs
+
+
+def main() -> None:
+    for _, rendered in build_demo_outputs():
         print("=" * 72)
         print(rendered)
 
