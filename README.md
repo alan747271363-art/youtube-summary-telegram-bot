@@ -73,8 +73,27 @@ The bot uses long polling, so it does not need a public webhook URL.
 python -m compileall app tests scripts
 pytest
 ruff check app tests scripts
+python scripts/config_check.py --allow-missing-token
 python scripts/smoke_demo.py
 ```
+
+## Configuration Check
+
+Before a live Railway deployment, verify the environment without printing any
+secret values:
+
+```bash
+python scripts/config_check.py
+```
+
+For offline review without a Telegram token:
+
+```bash
+python scripts/config_check.py --allow-missing-token
+```
+
+The check reports whether required variables are present, shows optional values
+or defaults, validates numeric limits, and hides the actual bot token.
 
 ## Reviewer Smoke Demo
 
@@ -96,6 +115,7 @@ renderer used by the bot.
 - English and Chinese timestamped summary rendering: `app/summarizer.py`
 - Railway deployment files: `Dockerfile`, `Procfile`, `railway.json`
 - Automated validation: `.github/workflows/ci.yml`
+- Secret-safe configuration check: `scripts/config_check.py`
 - Offline review demo: `scripts/smoke_demo.py`
 
 ## Notes for Review
