@@ -26,10 +26,10 @@ jobs:
         run: python -m pip install -e ".[dev]"
 
       - name: Compile Python files
-        run: python -m compileall app tests
+        run: python -m compileall app tests scripts
 
       - name: Run tests
         run: python -m pytest
 
       - name: Run linter
-        run: python -m ruff check app tests
+        run: python -m ruff check app tests scripts

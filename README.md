@@ -70,10 +70,33 @@ The bot uses long polling, so it does not need a public webhook URL.
 ## Validation
 
 ```bash
-python -m compileall app tests
+python -m compileall app tests scripts
 pytest
-ruff check app tests
+ruff check app tests scripts
+python scripts/smoke_demo.py
 ```
+
+## Reviewer Smoke Demo
+
+Reviewers can check the summary formatting without a Telegram token, YouTube
+download, Whisper model, or OpenAI key:
+
+```bash
+python scripts/smoke_demo.py
+```
+
+The demo prints one English and one Chinese sample reply using the same summary
+renderer used by the bot.
+
+## Quest Deliverable Checklist
+
+- Telegram bot entrypoint: `app/telegram_bot.py`
+- YouTube URL parsing and audio download: `app/youtube.py`
+- Whisper transcription wrapper: `app/transcriber.py`
+- English and Chinese timestamped summary rendering: `app/summarizer.py`
+- Railway deployment files: `Dockerfile`, `Procfile`, `railway.json`
+- Automated validation: `.github/workflows/ci.yml`
+- Offline review demo: `scripts/smoke_demo.py`
 
 ## Notes for Review
 
