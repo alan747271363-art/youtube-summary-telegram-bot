@@ -75,7 +75,11 @@ pytest
 ruff check app tests scripts
 python scripts/config_check.py --allow-missing-token
 python scripts/smoke_demo.py
+docker build --tag youtube-summary-telegram-bot:railway .
 ```
+
+GitHub Actions also builds the Docker image used by Railway, so reviewers can
+verify deployment packaging without any secrets.
 
 ## Configuration Check
 
@@ -117,7 +121,7 @@ For reviewers who do not want to run any commands, the committed
 - Whisper transcription wrapper: `app/transcriber.py`
 - English and Chinese timestamped summary rendering: `app/summarizer.py`
 - Railway deployment files: `Dockerfile`, `Procfile`, `railway.json`
-- Automated validation: `.github/workflows/ci.yml`
+- Automated validation and Railway Docker build: `.github/workflows/ci.yml`
 - Secret-safe configuration check: `scripts/config_check.py`
 - Offline review demo: `scripts/smoke_demo.py`
 - Static review artifact: `reviewer-demo.md`

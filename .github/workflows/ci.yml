@@ -33,3 +33,13 @@ jobs:
 
       - name: Run linter
         run: python -m ruff check app tests scripts
+
+  railway-docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build Railway Docker image
+        run: docker build --tag youtube-summary-telegram-bot:railway .
